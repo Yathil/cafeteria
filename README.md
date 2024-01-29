@@ -1,3 +1,5 @@
+## <span style="color:green">Algunos encabezados verdes</span>
+
 # Cafetería
 
 Proyecto de Flutter sobre una cafetería.
@@ -35,9 +37,11 @@ Me he guiado para la instalacion un tutorial de youtube bastante bien explicado 
 
 Una vez instalado todo lo necesario, clonamos el repositorio y ejecutamos el comando `flutter pub get` para instalar las dependencias.
 
+```sh
 git clone https://github.com/Yathil/cafeteria.git
 git pull origin main
 flutter pub get
+```
 
 ## Ejecutando las pruebas
 
