@@ -60,4 +60,4 @@ Para ejecutar el proyecto en modo debug, ejecutamos el comando `flutter run` en 
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles de la licencia.
+Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE) para detalles de la licencia.
