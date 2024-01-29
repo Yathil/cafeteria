@@ -25,6 +25,8 @@ Qué cosas necesitas para instalar el software y cómo instalarlas.
 - Android Studio: https://developer.android.com/studio
 - Visual Studio Code: https://code.visualstudio.com/download
 
+### Guía de instalación
+
 Me he guiado para la instalacion un tutorial de youtube bastante bien explicado y actualizado:
 
 - Tutorial: https://www.youtube.com/watch?v=F5SuladTAQ4&list=PLDwcMMeT6cMICr6QRkqe0sbTqyINkOb6H&index=6&t=6s&ab_channel=YoeCode
