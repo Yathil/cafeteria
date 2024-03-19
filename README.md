@@ -1,5 +1,3 @@
-## <span style="color:green">Algunos encabezados verdes</span>
-
 # Cafetería
 
 Proyecto de Flutter sobre una cafetería.
