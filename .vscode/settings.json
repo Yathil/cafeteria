@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "cafeteria",
+            "database": "C:\\MEGAsync\\MEGAsync\\TFC\\DB\\Cafeteria.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
