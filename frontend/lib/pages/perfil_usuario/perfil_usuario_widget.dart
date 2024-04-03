@@ -1,11 +1,10 @@
+import 'package:cafeteria/models/perfil_usuario_model.dart';
 import 'package:flutter/material.dart';
-import 'package:cafeteria/pages/perfil_usuario/perfil_usuario_model.dart';
 import 'package:cafeteria/pages/menu_cafeteria/menu_cafeteria_widget.dart';
 import 'package:cafeteria/pages/historial_compras/historial_compras_widget.dart';
 import 'package:cafeteria/pages/historial_recargas_widget/historial_recargas_widget.dart';
-import 'package:cafeteria/pages/recarga_saldo_model/recarga_saldo_widget.dart';
+
 import 'package:cafeteria/pages/editar_perfil/editar_perfil_widget.dart';
-import 'package:cafeteria/services/database_helper.dart';
 
 class PerfilUsuarioWidget extends StatefulWidget {
   final PerfilUsuarioModel user;
@@ -117,21 +116,21 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
                 text: 'Recarga de Saldo',
                 icon: Icons.attach_money,
                 onPressed: () async {
-                  try {
-                    final isUserAdult = await DatabaseHelper.isUserAdult(_getUserData() as String);
-                    if (isUserAdult) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const RecargaSaldoWidget()),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('No puedes recargar saldo porque no eres menor de edad')),
-                      );
-                    }
-                  } catch (e) {
-                    print('Error al obtener los detalles del usuario: $e');
-                  }
+                  // try {
+                  //   final isUserAdult = await DatabaseHelper.isUserAdult(_getUserData() as String);
+                  //   if (isUserAdult) {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) => const RecargaSaldoWidget()),
+                  //     );
+                  //   } else {
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //       const SnackBar(content: Text('No puedes recargar saldo porque no eres menor de edad')),
+                  //     );
+                  //   }
+                  // } catch (e) {
+                  //   print('Error al obtener los detalles del usuario: $e');
+                  // }
                 },
               ),
 

@@ -1,4 +1,6 @@
 const mysql = require('mysql');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //Metodo para crear un nuevo administrador
 async function createAdmin(admin) {
@@ -39,8 +41,12 @@ async function getAdminByEmailAndPassword(email, password) {
 //Metodo para crear usuarios
 async function createUser(user) {
   const conn = await connect();
+
+  // Hashea la contraseña antes de almacenarla
+  const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+
   const query = 'INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)';
-  const values = [user.nombre, user.email, user.password];
+  const values = [user.nombre, user.email, hashedPassword];
 
   return new Promise((resolve, reject) => {
     conn.query(query, values, (err, results) => {

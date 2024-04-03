@@ -1,8 +1,16 @@
-import 'package:flutter/material.dart';
+//database
+import 'package:cafeteria/models/perfil_usuario_model.dart';
+import 'package:cafeteria/pages/admin/admin_widget.dart';
 
-import '../../services/database_helper.dart'; // Importa tu DatabaseHelper aquí
-import '../perfil_usuario/perfil_usuario_model.dart';
+import '../../crud_db/auth_db.dart';
+import '../../services/db_conection.dart';
+//models
+import '../../models/user_model.dart';
+import '../../models/admin_model.dart';
+//pages
 import '../perfil_usuario/perfil_usuario_widget.dart';
+//widgets
+import 'package:flutter/material.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -101,20 +109,28 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ElevatedButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            String email = _emailController.text;
-                            String password = _passwordController.text;
-                            bool exists = await DatabaseHelper.existsInEitherTable(email, password);
-                            if (exists) {
-                              PerfilUsuarioModel user = await DatabaseHelper.getUser(email);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => PerfilUsuarioWidget(user: user)),
-                              );
-                            } else {
+                            var username = _emailController.text;
+                            var password = _passwordController.text;
+                            var db = AuthDB(DBConnection());
+                            try {
+                              var user = await db.authenticateAndGetUser(username, password);
+                              if (user is AdminModel) {
+                                // Navega a la página de administrador
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => AdminWidget(admin: user)),
+                                );
+                              } else if (user is PerfilUsuarioModel) {
+                                // Navega a la página de usuario
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PerfilUsuarioWidget(user: user)),
+                                );
+                              }
+                            } catch (e) {
+                              // Muestra un mensaje de error
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Usuario o contraseña incorrectos'),
-                                ),
+                                SnackBar(content: Text('Nombre de usuario o contraseña incorrectos')),
                               );
                             }
                           }
