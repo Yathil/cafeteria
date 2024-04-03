@@ -5,20 +5,13 @@ class PerfilUsuarioModel extends UsuarioModel {
   final int edad;
 
   PerfilUsuarioModel({
-    required int id,
-    required String nombre,
-    required String passwordHash,
-    required String passwordSalt,
+    required super.id,
+    required super.nombre,
+    required super.passwordHash,
     required this.saldo,
-    required String email,
+    required super.email,
     required this.edad,
-  }) : super(
-          id: id,
-          nombre: nombre,
-          email: email,
-          passwordHash: passwordHash,
-          passwordSalt: passwordSalt,
-        );
+  });
 
   // Método para convertir un Map a PerfilUsuarioModel
   factory PerfilUsuarioModel.fromMap(Map<String, dynamic> map) {
@@ -26,7 +19,6 @@ class PerfilUsuarioModel extends UsuarioModel {
       id: map['id'] ?? 0,
       nombre: map['name'] ?? '',
       passwordHash: map['password'] ?? '',
-      passwordSalt: map['password_salt'] ?? '',
       saldo: map['saldo'] ?? 0,
       email: map['email'] ?? '',
       edad: map['edad'] ?? 0,
@@ -39,7 +31,6 @@ class PerfilUsuarioModel extends UsuarioModel {
       'id': id,
       'nombre': nombre,
       'password': passwordHash,
-      'password_salt': passwordSalt,
       'saldo': saldo,
       'email': email,
       'edad': edad,
@@ -55,6 +46,5 @@ class PerfilUsuarioModel extends UsuarioModel {
           nombre: '',
           email: '',
           passwordHash: '',
-          passwordSalt: '',
         );
 }

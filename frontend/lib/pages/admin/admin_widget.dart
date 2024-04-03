@@ -11,7 +11,7 @@ import 'crear_usuario_widget.dart';
 class AdminWidget extends StatefulWidget {
   final AdminModel admin;
 
-  AdminWidget({Key? key, required this.admin}) : super(key: key);
+  const AdminWidget({super.key, required this.admin});
 
   @override
   _AdminWidgetState createState() => _AdminWidgetState();
@@ -79,7 +79,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ProductoWidget()),
+                              MaterialPageRoute(builder: (context) => const ProductoWidget()),
                             );
                           },
                         ),
@@ -89,7 +89,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => RecargaSaldoWidget()),
+                              MaterialPageRoute(builder: (context) => const RecargaSaldoWidget()),
                             );
                           },
                         ),

@@ -2,18 +2,11 @@ import 'user_model.dart';
 
 class AdminModel extends UsuarioModel {
   AdminModel({
-    required int id,
-    required String nombre,
-    required String email,
-    required String passwordHash,
-    required String passwordSalt,
-  }) : super(
-          id: id,
-          nombre: nombre,
-          email: email,
-          passwordHash: passwordHash,
-          passwordSalt: passwordSalt,
-        );
+    required super.id,
+    required super.nombre,
+    required super.email,
+    required super.passwordHash,
+  });
 
 // Método para convertir un json a AdminModel
   factory AdminModel.fromJson(Map<String, dynamic> json) {
@@ -22,7 +15,6 @@ class AdminModel extends UsuarioModel {
       nombre: json['nombre'],
       email: json['email'],
       passwordHash: json['passwordHash'],
-      passwordSalt: json['passwordSalt'],
     );
   }
 
@@ -34,7 +26,6 @@ class AdminModel extends UsuarioModel {
       'nombre': nombre,
       'email': email,
       'passwordHash': passwordHash,
-      'passwordSalt': passwordSalt,
     };
   }
 
@@ -45,6 +36,5 @@ class AdminModel extends UsuarioModel {
           nombre: '',
           email: '',
           passwordHash: '',
-          passwordSalt: '',
         );
 }

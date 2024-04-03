@@ -9,7 +9,7 @@ import 'package:cafeteria/pages/editar_perfil/editar_perfil_widget.dart';
 class PerfilUsuarioWidget extends StatefulWidget {
   final PerfilUsuarioModel user;
 
-  PerfilUsuarioWidget({Key? key, required this.user}) : super(key: key);
+  const PerfilUsuarioWidget({super.key, required this.user});
 
   @override
   _PerfilUsuarioWidgetState createState() => _PerfilUsuarioWidgetState();
@@ -46,7 +46,7 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
               Card(
                 margin: const EdgeInsets.all(15),
                 child: ListTile(
-                  leading: Icon(Icons.account_circle, size: 50),
+                  leading: const Icon(Icons.account_circle, size: 50),
                   title: Text(
                     'Nombre: ${user?.nombre}',
                     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -82,7 +82,7 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MenuCafeteriaWidget()),
+                    MaterialPageRoute(builder: (context) => const MenuCafeteriaWidget()),
                   );
                 },
               ),
@@ -94,7 +94,7 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HistorialComprasWidget()),
+                    MaterialPageRoute(builder: (context) => const HistorialComprasWidget()),
                   );
                 },
               ),
@@ -106,7 +106,7 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HistorialRecargasWidget()),
+                    MaterialPageRoute(builder: (context) => const HistorialRecargasWidget()),
                   );
                 },
               ),
@@ -163,7 +163,7 @@ class _PerfilUsuarioWidgetState extends State<PerfilUsuarioWidget> {
         icon: Icon(icon),
         label: Text(text),
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 15), // Ajusta el padding vertical
+          padding: const EdgeInsets.symmetric(vertical: 15), // Ajusta el padding vertical
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), // Bordes redondeados
         ),
       ),

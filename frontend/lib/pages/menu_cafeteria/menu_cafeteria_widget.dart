@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuCafeteriaWidget extends StatefulWidget {
-  MenuCafeteriaWidget({Key? key}) : super(key: key);
+  const MenuCafeteriaWidget({super.key});
 
   @override
   State<StatefulWidget> createState() {

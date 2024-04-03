@@ -1,11 +1,11 @@
 //database
 import 'package:cafeteria/models/perfil_usuario_model.dart';
 import 'package:cafeteria/pages/admin/admin_widget.dart';
+import 'package:cafeteria/pages/admin/crear_usuario_widget.dart';
 
 import '../../crud_db/auth_db.dart';
 import '../../services/db_conection.dart';
 //models
-import '../../models/user_model.dart';
 import '../../models/admin_model.dart';
 //pages
 import '../perfil_usuario/perfil_usuario_widget.dart';
@@ -13,7 +13,7 @@ import '../perfil_usuario/perfil_usuario_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginWidget extends StatefulWidget {
-  const LoginWidget({Key? key}) : super(key: key);
+  const LoginWidget({super.key});
 
   @override
   _LoginWidgetState createState() => _LoginWidgetState();
@@ -65,7 +65,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             child: Column(
               children: [
                 const SizedBox(height: 10),
-                Text('Login', style: Theme.of(context).textTheme.headline4),
+                Text('Login', style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(height: 30),
                 Form(
                   key: _formKey,
@@ -76,10 +76,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         autocorrect: false,
-                        decoration: InputDecoration(
-                          hintText: 'ejemplo@hotmail.com',
+                        decoration: const InputDecoration(
+                          hintText: 'ejemplo@ieseduardoprimo.es',
                           labelText: 'Correo electronico',
-                          icon: const Icon(Icons.alternate_email_rounded),
+                          icon: Icon(Icons.alternate_email_rounded),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -93,10 +93,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                         controller: _passwordController,
                         autocorrect: false,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: '******',
                           labelText: 'Contraseña',
-                          icon: const Icon(Icons.lock_outline),
+                          icon: Icon(Icons.lock_outline),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -111,7 +111,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           if (_formKey.currentState!.validate()) {
                             var username = _emailController.text;
                             var password = _passwordController.text;
-                            var db = AuthDB(DBConnection());
+                            var dbConnection = await DBConnection.connect();
+                            var db = AuthDB(dbConnection); // Asegúrate de conectar antes de autenticar
                             try {
                               var user = await db.authenticateAndGetUser(username, password);
                               if (user is AdminModel) {
@@ -130,7 +131,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             } catch (e) {
                               // Muestra un mensaje de error
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Nombre de usuario o contraseña incorrectos')),
+                                const SnackBar(content: Text('email de usuario o contraseña incorrectos')),
                               );
                             }
                           }
@@ -144,9 +145,15 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
           ),
           const SizedBox(height: 50),
-          const Text(
-            'Crear una nueva cuenta',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: () {
+              // Aquí puedes manejar el evento de toque, por ejemplo, navegando a la pantalla de creación de cuenta
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CrearUsuarioWidget()));
+            },
+            child: const Text(
+              'Crear una nueva cuenta',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
+            ),
           )
         ],
       ),
@@ -181,11 +188,11 @@ class _LoginWidgetState extends State<LoginWidget> {
       height: size.height * 0.4,
       child: Stack(
         children: [
-          Positioned(child: burbuja(), top: 90, left: 30),
-          Positioned(child: burbuja(), top: -40, left: -30),
-          Positioned(child: burbuja(), top: -50, right: -20),
-          Positioned(child: burbuja(), bottom: -50, left: 10),
-          Positioned(child: burbuja(), bottom: 120, right: 20),
+          Positioned(top: 90, left: 30, child: burbuja()),
+          Positioned(top: -40, left: -30, child: burbuja()),
+          Positioned(top: -50, right: -20, child: burbuja()),
+          Positioned(bottom: -50, left: 10, child: burbuja()),
+          Positioned(bottom: 120, right: 20, child: burbuja()),
         ],
       ),
     );

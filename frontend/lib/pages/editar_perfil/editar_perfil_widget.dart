@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 class EditarPerfilWidget extends StatefulWidget {
-  const EditarPerfilWidget({Key? key}) : super(key: key);
+  const EditarPerfilWidget({super.key});
 
   @override
   State<StatefulWidget> createState() {

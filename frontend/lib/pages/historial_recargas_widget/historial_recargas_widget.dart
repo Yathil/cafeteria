@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../services/database_helper.dart';
 
 import 'historial_recargas_model.dart';
 
 class HistorialRecargasWidget extends StatefulWidget {
-  const HistorialRecargasWidget({Key? key}) : super(key: key);
+  const HistorialRecargasWidget({super.key});
 
   @override
   _HistorialRecargasWidgetState createState() => _HistorialRecargasWidgetState();

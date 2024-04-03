@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProductoWidget extends StatefulWidget {
+  const ProductoWidget({super.key});
+
   @override
   _ProductoWidget createState() => _ProductoWidget();
 }
@@ -15,7 +17,7 @@ class _ProductoWidget extends State<ProductoWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Administrar Producto'),
+        title: const Text('Administrar Producto'),
       ),
       body: Form(
         key: _formKey,

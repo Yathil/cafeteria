@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HistorialComprasWidget extends StatelessWidget {
+  const HistorialComprasWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

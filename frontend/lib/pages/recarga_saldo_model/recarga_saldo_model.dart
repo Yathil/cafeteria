@@ -1,8 +1,8 @@
 class RecargaSaldoModel {
-  String _numeroTarjeta;
-  String _monto;
-  String _fecha;
-  String _hora;
+  final String _numeroTarjeta;
+  final String _monto;
+  final String _fecha;
+  final String _hora;
 
   RecargaSaldoModel(this._numeroTarjeta, this._monto, this._fecha, this._hora);
 
